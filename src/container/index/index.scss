@@ -1,7 +1,94 @@
 @use '../../style' as s;
 
-main {
-	background: s.color(dark);
-	color: s.color(light);
-	padding: s.space(4);
-} 
+.page {
+	display: flex;
+	flex-direction: column;
+	gap: s.space(6);
+	color: s.color(dark);
+	padding: s.space(6);
+	border-radius: s.space(3);
+	box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.10);
+}
+
+.form {
+	display: flex;
+	justify-content: space-between;
+	gap: s.space(3);
+
+	&__input {
+		border-radius: s.space(1);
+		border: 1px solid s.color(border);
+		padding: 12px 16px;
+		width: 100%;
+	}
+
+	&__button {
+		border-radius: s.space(1);
+		background-color: s.color(main);
+		padding: s.space(2) s.space(10);
+		color: s.color(light);
+		transition: opacity 0.7s;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+}
+
+.task__list {
+	display: flex;
+	flex-direction: column;
+
+	.task {
+		display: grid;
+		grid-template-columns: auto 1fr auto auto;
+		gap: s.space(2);
+		padding: s.space(3) 0;
+		border-bottom: 1px solid #D3DEE9;
+
+		&__button {
+			width: 28px;
+			height: 28px;
+			padding: s.space(2);
+			border-radius: 50%;
+			border: 1px solid #909294;
+			background-size: auto;
+			background-repeat: no-repeat;
+			background-position: center;
+			transition: all 0.7s;
+	
+			&--do {
+				background-image: url('/svg/task-do.svg');
+
+				&:hover {
+					border: 1px solid #008000;
+					background-image: url('/svg/task-done.svg');
+				}
+			}
+	
+			&--done {
+				border: 1px solid #008000;
+				background-image: url('/svg/task-done.svg');
+			}
+	
+			&--delete {
+				background-image: url('/svg/task-delete.svg');
+
+				&:hover {
+					border: 1px solid #af0000;
+					background-image: url('/svg/task-delete-hover.svg');
+				}
+			}
+		}
+
+		&--done {
+			.task__number {
+				color: #909294;
+			}
+			.task__text {
+				text-decoration: line-through;
+				color: #909294;
+			}
+		}
+	}
+}
